@@ -98,13 +98,18 @@
                 $result = $this->adaptToPage($result, $this->currentPage);
                 if ($result) {
                     foreach ($result as $res) {
-                        echo '<details><summary class="mobile"></summary>';
+                        echo '<details><summary class="mobile"></summary><span>' . $res->getAnswerId() . '</span>
+                        <span>' . $res->getText() . '</span><span>' . $res->getEmail() . '</span>
+                        <span>' . $res->getSurname() . '</span><span>' . $res->getFirstname() . '</span>
+                        <span><button class="answerbutton" onclick="answerOfAnswer(' . $res->getId() . ')">Antworten</button></span>';
                         if (!empty($res->getAnswerofanswer())) {
-                            $this->printData($res->getAnswerofanswer(), false)
+                            $this->printData($res->getAnswerofanswer(), false);
                         }
                         echo '</details>';
                     }
                 }
+            } else {
+                
             }
         }
 

@@ -98,10 +98,13 @@
                 $result = $this->adaptToPage($result, $this->currentPage);
                 if ($result) {
                     foreach ($result as $res) {
-                        echo '<details><summary class="mobile"></summary><span>' . $res->getAnswerId() . '</span>
-                        <span>' . $res->getText() . '</span><span>' . $res->getEmail() . '</span>
-                        <span>' . $res->getSurname() . '</span><span>' . $res->getFirstname() . '</span>
-                        <span><button class="answerbutton" onclick="answerOfAnswer(' . $res->getId() . ')">Antworten</button></span>';
+                        echo '<details><summary class="mobile"><span class="id_header">ID</span><span class="text_header">Text</span>
+                        <span style="border-bottom:1px solid lightgrey;"></span><span class="id">' . $res->getId() . '</span><span class="text">' . $res->getText() . '</span>                        
+                        <span class="email_header">E-Mail</span><span class="surname_header">Nachname</span><span class="firstname_header">Vorname</span>
+                        <span class="email">' . $res->getEmail() . '</span><span class="surname">' . $res->getSurname() . '</span>
+                        <span class="firstname">' . $res->getFirstname() . '</span>
+                        <span class="answer"><button class="answerbutton" onclick="answerOfAnswer(' . $res->getId() . ')">Antworten</button></span>
+                        </summary>';
                         if (!empty($res->getAnswerofanswer())) {
                             $this->printData($res->getAnswerofanswer(), false);
                         }
@@ -109,7 +112,21 @@
                     }
                 }
             } else {
-                
+                if ($result) {
+                    foreach ((array)$result as $res) {
+                        echo '<details><summary class="mobile"><span class="id_header">AID</span><span class="text_header">Text</span>
+                        <span style="border-bottom:1px solid lightgrey;"></span><span class="id">' . $res->getAnswerId() . '</span><span class="text">' . $res->getText() . '</span>                        
+                        <span class="email_header">E-Mail</span><span class="surname_header">Nachname</span><span class="firstname_header">Vorname</span>
+                        <span class="email">' . $res->getEmail() . '</span><span class="surname">' . $res->getSurname() . '</span>
+                        <span class="firstname">' . $res->getFirstname() . '</span>
+                        <span class="answer"><button class="answerbutton" onclick="answerOfAnswer(' . $res->getAnswerId() . ')">Antworten</button></span>
+                        </summary>';
+                        if ($res->getAnswerofanswer()) {
+                            $this->printData($res->getAnswerofanswer(), false);
+                        }
+                        echo '</details>';
+                    }
+                }
             }
         }
 

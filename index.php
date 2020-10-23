@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./assets/main.css">
+    <link rel="stylesheet" href="./assets/dist/main.css">
     <title>Gästebuch</title>
 
     <style type="text/css">
@@ -34,6 +34,14 @@
 
             var container = document.getElementById('form');
             container.appendChild(input);
+        }
+        function hideToast() {
+            var div = document.getElementById('toast')
+            setTimeout(function() {
+                if (div.className.includes('show')) {
+                    div.className = div.className.replace('show', '');
+                }
+            }, 3000);
         }
   </script>
 
@@ -129,6 +137,8 @@
             }  
         }
     ?>
+
+    <!-- <div class="toast"><span>Eintrag erfolgreich erstellt!</span></div> -->
 
     <h1>Formular</h1>
 

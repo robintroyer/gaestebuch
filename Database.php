@@ -134,7 +134,9 @@
             }
             if($sql){
                 if($this->conn->query($sql) === true){
-                    echo 'New record added successfully';
+                    // echo 'New record added successfully';
+                    echo '<div id="toast" class="show">Eintrag erfolgreich erstellt!</div>';
+                    echo '<script type="text/javascript">hideToast();</script>';
                 } else {
                     echo 'Error: ' . $sql . '<br />' . $this->conn->error;
                 }

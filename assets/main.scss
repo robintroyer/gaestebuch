@@ -128,12 +128,150 @@ details {
     grid-template-columns: 1fr 1fr 1fr 3fr 3fr;
 }
 
+#toast {
+    background-color: darken($main_color, 10%);
+    color: white;
+    border-radius: 16px;
+    height: 50px;
+    width: 300px;
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    // left: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    
+    bottom: 30px;
+    // position: absolute;
+    position: fixed;
+    visibility: hidden;
+}
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+
+}
+
+summary:focus {
+    outline: none;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
 
 @media only screen and (max-width: 425px) {
     body {
         font-size: 12px;
     }
+    .row {
+        display: none;
+    }
+    .grid {
+        display: none;
+    }
+    .mobile {
+        margin-top: 20px;
+    }
+    .mobile span {
+        padding: 5px;
+    }
+    .id_header {
+        font-weight: bold;
+    }
+    .text_header {
+        grid-area: 1 / 3 / span 1 / span 3;
+        font-weight: bold;
+        border-left: 1px solid lightgrey;
+    }
+    .id {
+        border-bottom: 1px solid lightgrey;
+    }
+    .text {
+        grid-area: 2 / 3 / span 1 / span 3;
+        border-bottom: 1px solid lightgrey;
+        border-left: 1px solid lightgrey;
+    }
+    .email_header {
+        font-weight: bold;
+        grid-area: 3 / 1 / span 1 / span 3;
+    }
+    .surname_header {
+        font-weight: bold;
+        grid-area: 3 / 4 / span 1 / span 1;
+        border-left: 1px solid lightgrey;
+    }
+    .firstname_header {
+        font-weight: bold;
+        grid-area: 3 / 5 / span 1 / span 1;
+        border-left: 1px solid lightgrey;
+    }
+    .email {
+        grid-area: 4 / 1 / span 1 / span 3;
+    }
+    .surname {
+        grid-area: 4 / 4 / span 1 / span 1;
+        border-left: 1px solid lightgrey;
+    }
+    .firstname {
+        grid-area: 4 / 5 / span 1 / span 1;
+        border-left: 1px solid lightgrey;
+    }
+    .answer {
+        grid-area: 5 / 1 / span 1 / span 5;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-top: 1px solid lightgrey;
+    }
+    .answerbutton {
+        width: 100%;
+    }
 }
-@media only screen and (min-width: 426px) {
 
+@media only screen and (min-width: 426px) {
+    .mobile {
+        display: none;
+    }
 }
